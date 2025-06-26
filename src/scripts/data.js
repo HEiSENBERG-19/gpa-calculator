@@ -29,20 +29,20 @@ const CSE_SUBJECTS = {
         { code: 'BPHYS102', name: 'Applied Physics for CSE Stream', credits: 4 },
         { code: 'BPOPS103', name: 'Principles of Programming Using C', credits: 3 },
         { code: 'BESCK104x', name: 'Engineering Science Course-I', credits: 3 },
-        { code: 'BETCK105x', name: 'Emerging Technology Course-I', credits: 3 },
-        { code: 'BENGK106', name: 'Communicative English', credits: 1 },
-        { code: 'BKSKK107', name: 'Samskrutika Kannada', credits: 1 },
-        { code: 'BIDTK158', name: 'Innovation and Design Thinking', credits: 1 }
+        { code: 'BETCK105x/BPLCK105x', name: 'Emerging Technology Course-I/Programming Languages Course-I', credits: 3 },
+        { code: 'BENGK106/BPWSK106', name: 'Communicative English/Professional Writing Skills in English', credits: 1 },
+        { code: 'BKSKK107/BKBKK107/BICOK107', name: 'Samskrutika Kannada/Balake Kannada/Indian Constitution', credits: 1 },
+        { code: 'BIDTK158/BSFHK158', name: 'Innovation and Design Thinking/Scientific Foundations of Health', credits: 1 }
     ],
     2: [
         { code: 'BMATS201', name: 'Mathematics-II for CSE Stream', credits: 4 },
         { code: 'BCHES202', name: 'Applied Chemistry for CSE Stream', credits: 4 },
         { code: 'BCEDK203', name: 'Computer-Aided Engineering Drawing', credits: 3 },
         { code: 'BESCK204x', name: 'Engineering Science Course-II', credits: 3 },
-        { code: 'BETCK205x', name: 'Emerging Technology Course-II', credits: 3 },
-        { code: 'BENGK206', name: 'Communicative English', credits: 1 },
-        { code: 'BKSKK207', name: 'Samskrutika Kannada', credits: 1 },
-        { code: 'BIDTK258', name: 'Innovation and Design Thinking', credits: 1 }
+        { code: 'BETCK205x/BPLCK205x', name: 'Emerging Technology Course-II/Programming Languages Course-II', credits: 3 },
+        { code: 'BENGK206/BPWSK206', name: 'Communicative English/Professional Writing Skills in English', credits: 1 },
+        { code: 'BKSKK207/BKBKK207/BICOK207', name: 'Samskrutika Kannada/Balake Kannada/Indian Constitution', credits: 1 },
+        { code: 'BIDTK258/BSFHK258', name: 'Innovation and Design Thinking/Scientific Foundations of Health', credits: 1 }
     ],
     3: [
         { code: 'BCS301', name: 'Mathematics for Computer Science', credits: 4 },
@@ -105,20 +105,20 @@ const ECE_SUBJECTS = {
         { code: 'BCHEE102', name: 'Chemistry for EES Stream', credits: 4 },
         { code: 'BCEDK103', name: 'Computer-Aided Engineering Drawing', credits: 3 },
         { code: 'BESCK104x', name: 'Engineering Science Course-I', credits: 3 },
-        { code: 'BETCK105x', name: 'Emerging Technology Course-I', credits: 3 },
-        { code: 'BENGK106', name: 'Communicative English', credits: 1 },
-        { code: 'BKSKK107', name: 'Samskrutika Kannada', credits: 1 },
-        { code: 'BIDTK158', name: 'Innovation and Design Thinking', credits: 1 }
+        { code: 'BETCK105x/BPLCK105x', name: 'Emerging Technology Course-I/Programming Languages Course-I', credits: 3 },
+        { code: 'BENGK106/BPWSK106', name: 'Communicative English/Professional Writing Skills in English', credits: 1 },
+        { code: 'BKSKK107/BKBKK107/BICOK107', name: 'Samskrutika Kannada/Balake Kannada/Indian Constitution', credits: 1 },
+        { code: 'BIDTK158/BSFHK158', name: 'Innovation and Design Thinking/Scientific Foundations of Health', credits: 1 }
     ],
     2: [
         { code: 'BMATE201', name: 'Mathematics-II for EES Stream', credits: 4 },
         { code: 'BPHYE202', name: 'Applied Physics for EES Stream', credits: 4 },
-        { code: 'BEEE203', name: 'Elements of Electrical Engineering', credits: 3 },
+        { code: 'BEEE203/BBEE203', name: 'Elements of Electrical Engineering/Basic Electronics', credits: 3 },
         { code: 'BESCK204x', name: 'Engineering Science Course-II', credits: 3 },
-        { code: 'BETCK205x', name: 'Emerging Technology Course-II', credits: 3 },
-        { code: 'BENGK206', name: 'Communicative English', credits: 1 },
-        { code: 'BKSKK207', name: 'Samskrutika Kannada', credits: 1 },
-        { code: 'BIDTK258', name: 'Innovation and Design Thinking', credits: 1 }
+        { code: 'BETCK205x/BPLCK205x', name: 'Emerging Technology Course-II/Programming Languages Course-II', credits: 3 },
+        { code: 'BENGK206/BPWSK206', name: 'Communicative English/Professional Writing Skills in English', credits: 1 },
+        { code: 'BKSKK207/BKBKK207/BICOK207', name: 'Samskrutika Kannada/Balake Kannada/Indian Constitution', credits: 1 },
+        { code: 'BIDTK258/BSFHK258', name: 'Innovation and Design Thinking/Scientific Foundations of Health', credits: 1 }
     ],
     3: [
         { code: 'BMATEC301', name: 'Mathematics-III for EC Engineering', credits: 3 },
