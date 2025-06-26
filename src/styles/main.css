@@ -1,0 +1,49 @@
+/* Custom styles to complement Tailwind CSS */
+
+/* Button active state */
+.active {
+    background-color: #2563eb !important;
+    color: white !important;
+}
+
+/* Table styling */
+table {
+    font-size: 14px;
+}
+
+/* Input field styling */
+input[type="number"] {
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    table {
+        font-size: 12px;
+    }
+    
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* Animation for smooth transitions */
+.fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Grade color coding */
+.grade-o { color: #059669; font-weight: bold; }
+.grade-a-plus { color: #0d9488; font-weight: bold; }
+.grade-a { color: #0891b2; font-weight: bold; }
+.grade-b-plus { color: #3b82f6; font-weight: bold; }
+.grade-b { color: #6366f1; font-weight: bold; }
+.grade-c { color: #8b5cf6; font-weight: bold; }
+.grade-p { color: #f59e0b; font-weight: bold; }
+.grade-f { color: #ef4444; font-weight: bold; }
