@@ -11,120 +11,131 @@
 </head>
 <body>
   <div class="main-container">
-    <!-- Header -->
+    <!-- Window Header -->
+    <div class="window-header">
+      <div class="window-controls">
+        <div class="window-control close"></div>
+        <div class="window-control minimize"></div>
+        <div class="window-control maximize"></div>
+      </div>
+      <div class="window-title">GPA Calculator</div>
+    </div>
+
+    <!-- Header Section -->
     <header class="header-section">
       <div class="header-content">
-        <span class="tag-label">UNI/GPAENGINE</span>
-        <h1 class="main-title">GPA Calculator</h1>
-        <p class="subheading">Calculate your SGPA and CGPA accurately by entering subject scores</p>
+        <div class="logo-placeholder">GP</div>
+        <div class="header-text">
+          <h1 class="main-title">GPA Calculator</h1>
+          <p class="subheading">Calculate your SGPA and CGPA accurately by entering subject scores</p>
+        </div>
       </div>
-      <button id="theme-toggle-btn" class="theme-toggle" title="Toggle theme">
-        <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.95-4.243l-1.59-1.59M3 12h2.25m.386-6.364l1.59 1.591M12 12a6 6 0 100 12 6 6 0 000-12z" /></svg>
-        <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25c0 5.385 4.365 9.75 9.75 9.75 2.572 0 4.92-.99 6.697-2.648z" /></svg>
-      </button>
     </header>
 
-    <!-- Main Parameter Card -->
-    <main class="parameter-card">
-      <!-- Mode Selection -->
-      <div class="control-group">
-        <label class="control-label">Academic Mode</label>
-        <div class="segmented-control">
-          <button id="sgpa-mode-btn" class="mode-btn active">SGPA</button>
-          <button id="cgpa-mode-btn" class="mode-btn">CGPA</button>
+    <!-- Window Content -->
+    <div class="window-content">
+      <!-- Main Parameter Card -->
+      <main class="parameter-card">
+        <!-- Mode Selection -->
+        <div class="control-group">
+          <label class="control-label">Academic Mode</label>
+          <div class="segmented-control">
+            <button id="sgpa-mode-btn" class="mode-btn active">SGPA</button>
+            <button id="cgpa-mode-btn" class="mode-btn">CGPA</button>
+          </div>
         </div>
-      </div>
 
-      <!-- Branch Selection -->
-      <div id="branch-selection-container" class="control-group">
-        <label class="control-label">Branch / Stream</label>
-        <div id="branch-buttons" class="segmented-control">
-          <button data-branch="cse" class="branch-btn">CSE</button>
-          <button data-branch="ece" class="branch-btn">ECE</button>
+        <!-- Branch Selection -->
+        <div id="branch-selection-container" class="control-group">
+          <label class="control-label">Branch / Stream</label>
+          <div id="branch-buttons" class="segmented-control">
+            <button data-branch="cse" class="branch-btn">CSE</button>
+            <button data-branch="ece" class="branch-btn">ECE</button>
+          </div>
         </div>
-      </div>
 
-      <!-- Semester Selection (for SGPA mode) -->
-      <div id="semester-selection-container" class="control-group hidden">
-        <label class="control-label">Semester</label>
-        <div id="semester-buttons" class="semester-grid">
-          <!-- Semester buttons will be generated here by app.js -->
+        <!-- Semester Selection (for SGPA mode) -->
+        <div id="semester-selection-container" class="control-group hidden">
+          <label class="control-label">Semester</label>
+          <div id="semester-buttons" class="semester-grid">
+            <!-- Semester buttons will be generated here by app.js -->
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
 
-    <!-- SGPA Calculator Section -->
-    <section id="sgpa-section" class="calculator-section hidden">
-      <div id="subjects-container">
-        <h3 class="section-title">Enter Marks for Semester <span id="sgpa-semester-display"></span></h3>
-        <div class="table-wrapper">
-          <table class="subjects-table">
-            <thead>
-              <tr>
-                <th>Course Code</th>
-                <th>Subject Name</th>
-                <th>Credits</th>
-                <th>Marks (0-100)</th>
-                <th>Grade</th>
-              </tr>
-            </thead>
-            <tbody id="subjects-table-body">
-              <!-- Dynamic rows will be inserted here -->
-            </tbody>
-          </table>
+      <!-- SGPA Calculator Section -->
+      <section id="sgpa-section" class="calculator-section hidden">
+        <div id="subjects-container">
+          <h3 class="section-title">Enter Marks for Semester <span id="sgpa-semester-display"></span></h3>
+          <div class="table-wrapper">
+            <table class="subjects-table">
+              <thead>
+                <tr>
+                  <th>Course Code</th>
+                  <th>Subject Name</th>
+                  <th>Credits</th>
+                  <th>Marks (0-100)</th>
+                  <th>Grade</th>
+                </tr>
+              </thead>
+              <tbody id="subjects-table-body">
+                <!-- Dynamic rows will be inserted here -->
+              </tbody>
+            </table>
+          </div>
+          
+          <!-- SGPA Result -->
+          <div id="sgpa-result-box" class="result-box">
+            <div class="result-item">
+              <span>Total Credits:</span>
+              <span id="total-credits">0</span>
+            </div>
+            <div class="result-item main-result">
+              <span>SGPA:</span>
+              <span id="sgpa-result">0.00</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CGPA Calculator Section -->
+      <section id="cgpa-section" class="calculator-section hidden">
+        <h2 class="section-title">CGPA Calculator</h2>
+        
+        <!-- CGPA Mode Toggle -->
+        <div class="control-group">
+          <label class="control-label">Calculation Mode</label>
+          <div class="segmented-control">
+              <button id="cgpa-bySgpa-btn" class="cgpa-mode-btn active">By SGPA</button>
+              <button id="cgpa-byMarks-btn" class="cgpa-mode-btn">By Marks</button>
+          </div>
+        </div>
+
+        <!-- SGPA Input Fields (By SGPA Mode) -->
+        <div id="sgpa-inputs-container">
+          <h3 class="subsection-title">Enter SGPA for Each Semester</h3>
+          <div id="cgpa-sgpa-inputs" class="input-grid">
+            <!-- Dynamic SGPA input fields will be inserted here -->
+          </div>
+        </div>
+
+        <!-- Subject Marks Input Fields (By Marks Mode) -->
+        <div id="cgpa-marks-entry-container" class="hidden">
+            <h3 class="subsection-title">Enter Marks for All Subjects</h3>
+            <div id="all-semesters-accordion" class="accordion-container">
+                <!-- Accordion for all semesters will be generated here -->
+            </div>
         </div>
         
-        <!-- SGPA Result -->
-        <div id="sgpa-result-box" class="result-box">
-          <div class="result-item">
-            <span>Total Credits:</span>
-            <span id="total-credits">0</span>
-          </div>
+        <!-- CGPA Result -->
+        <div id="cgpa-result-box" class="result-box">
           <div class="result-item main-result">
-            <span>SGPA:</span>
-            <span id="sgpa-result">0.00</span>
+            <span>CGPA:</span>
+            <span id="cgpa-result">0.00</span>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- CGPA Calculator Section -->
-    <section id="cgpa-section" class="calculator-section hidden">
-      <h2 class="section-title">CGPA Calculator</h2>
-      
-      <!-- CGPA Mode Toggle -->
-      <div class="control-group">
-        <label class="control-label">Calculation Mode</label>
-        <div class="segmented-control">
-            <button id="cgpa-bySgpa-btn" class="cgpa-mode-btn active">By SGPA</button>
-            <button id="cgpa-byMarks-btn" class="cgpa-mode-btn">By Marks</button>
-        </div>
-      </div>
-
-      <!-- SGPA Input Fields (By SGPA Mode) -->
-      <div id="sgpa-inputs-container">
-        <h3 class="subsection-title">Enter SGPA for Each Semester</h3>
-        <div id="cgpa-sgpa-inputs" class="input-grid">
-          <!-- Dynamic SGPA input fields will be inserted here -->
-        </div>
-      </div>
-
-      <!-- Subject Marks Input Fields (By Marks Mode) -->
-      <div id="cgpa-marks-entry-container" class="hidden">
-          <h3 class="subsection-title">Enter Marks for All Subjects</h3>
-          <div id="all-semesters-accordion" class="accordion-container">
-              <!-- Accordion for all semesters will be generated here -->
-          </div>
-      </div>
-      
-      <!-- CGPA Result -->
-      <div id="cgpa-result-box" class="result-box">
-        <div class="result-item main-result">
-          <span>CGPA:</span>
-          <span id="cgpa-result">0.00</span>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
     <!-- Footer -->
     <footer class="footer-section">
