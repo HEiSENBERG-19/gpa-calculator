@@ -1,7 +1,7 @@
 /* Window Theme for GPA Calculator inspired by FIRE Withdrawal Calculator */
 
 :root {
-    /* Window Theme Colors */
+    /* Dark Theme Colors (default) */
     --bg-main: #0a0a0a;
     --bg-window: #1a1a1a;
     --bg-content: #222222;
@@ -18,6 +18,26 @@
     --bg-button-active: #00ff41;
     --shadow-color: rgba(0, 0, 0, 0.5);
     --window-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Light Theme Colors */
+[data-theme="light"] {
+    --bg-main: #f8fafc;
+    --bg-window: #ffffff;
+    --bg-content: #f1f5f9;
+    --bg-input: #e2e8f0;
+    --border-color: #cbd5e1;
+    --border-accent: #94a3b8;
+    --accent-primary: #6366f1;
+    --accent-secondary: #8b5cf6;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --bg-button: #e2e8f0;
+    --bg-button-hover: #cbd5e1;
+    --bg-button-active: #6366f1;
+    --shadow-color: rgba(99, 102, 241, 0.15);
+    --window-shadow: 0 20px 40px rgba(99, 102, 241, 0.1);
 }
 
 /* Reset and Base Styles */
@@ -362,7 +382,7 @@ input[type="number"]:hover {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    box-shadow: 0 4px 12px rgba(0, 255, 65, 0.1);
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.1);
 }
 
 .result-item {
@@ -560,27 +580,144 @@ input[type="number"]:hover {
     }
 }
 
-@media (max-width: 480px) {
-    .window-header {
-        padding: 0.75rem 1rem;
-    }
-    
-    .logo-placeholder {
-        width: 32px;
-        height: 32px;
-        font-size: 1rem;
-    }
-    
-    .main-title {
-        font-size: 1.3rem;
-    }
-    
-    .semester-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
 /* Remove old conflicting styles */
 .tag-label {
     display: none;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+    background-color: var(--bg-button);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.theme-toggle:hover {
+    background-color: var(--bg-button-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px var(--shadow-color);
+}
+
+.theme-toggle svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle .sun-icon {
+    display: none;
+}
+
+.theme-toggle .moon-icon {
+    display: block;
+}
+
+[data-theme="light"] .theme-toggle .sun-icon {
+    display: block;
+}
+
+[data-theme="light"] .theme-toggle .moon-icon {
+    display: none;
+}
+
+/* Light theme specific adjustments */
+[data-theme="light"] body {
+    background-image: 
+        radial-gradient(circle at 25% 25%, #eef2ff 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, #f3e8ff 0%, transparent 50%);
+}
+
+[data-theme="light"] .window-header {
+    background: linear-gradient(90deg, #ffffff 0%, #f8fafc 100%);
+}
+
+[data-theme="light"] .logo-placeholder {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    color: white;
+}
+
+[data-theme="light"] .brand-tag {
+    background-color: rgba(99, 102, 241, 0.1);
+    color: var(--accent-primary);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+[data-theme="light"] .segmented-control button.active {
+    background-color: var(--accent-primary);
+    color: white;
+    box-shadow: 0 2px 4px rgba(99, 102, 241, 0.3);
+}
+
+[data-theme="light"] .semester-grid .semester-btn.active {
+    background-color: var(--accent-primary);
+    color: white;
+    box-shadow: 0 2px 4px rgba(99, 102, 241, 0.3);
+}
+
+[data-theme="light"] .result-box {
+    background: linear-gradient(135deg, var(--bg-input), var(--bg-content));
+    border: 1px solid var(--accent-primary);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+}
+
+[data-theme="light"] input[type="number"]:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    background-color: var(--bg-window);
+}
+
+/* Light theme grade colors - More vibrant and diverse */
+[data-theme="light"] .grade-o { color: #10b981; font-weight: bold; }
+[data-theme="light"] .grade-a-plus { color: #3b82f6; font-weight: bold; }
+[data-theme="light"] .grade-a { color: #6366f1; font-weight: bold; }
+[data-theme="light"] .grade-b-plus { color: #8b5cf6; font-weight: bold; }
+[data-theme="light"] .grade-b { color: #ec4899; font-weight: bold; }
+[data-theme="light"] .grade-c { color: #f59e0b; font-weight: bold; }
+[data-theme="light"] .grade-p { color: #eab308; font-weight: bold; }
+[data-theme="light"] .grade-f { color: #ef4444; font-weight: bold; }
+
+/* Additional light theme enhancements */
+[data-theme="light"] .control-label {
+    color: var(--accent-primary);
+}
+
+[data-theme="light"] .subjects-table th {
+    color: var(--accent-primary);
+    background-color: var(--bg-input);
+}
+
+[data-theme="light"] .accordion-header .sgpa-display span {
+    color: var(--accent-primary);
+}
+
+[data-theme="light"] .result-item span:last-child {
+    color: var(--accent-primary);
+}
+
+/* Responsive adjustments for theme toggle */
+@media (max-width: 768px) {
+    .theme-toggle {
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.5rem;
+    }
+    
+    .theme-toggle span {
+        display: none;
+    }
 }
