@@ -6,7 +6,7 @@ A modern, intuitive web application for calculating Semester Grade Point Average
 
 You can find a live version of the GPA Calculator here:
 
-[**Live Link**](https://gpa-calculator-rho-nine.vercel.app/)
+[**Live Link**](https://gpa-calculator-black.vercel.app/)
 
 ## Features
 
