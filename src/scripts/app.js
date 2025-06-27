@@ -19,8 +19,9 @@ class CGPACalculatorApp {
         document.getElementById('sgpa-mode-btn').addEventListener('click', () => this.switchMode('sgpa'));
         document.getElementById('cgpa-mode-btn').addEventListener('click', () => this.switchMode('cgpa'));
 
-        document.getElementById('cgpa-by-sgpa-btn').addEventListener('click', () => this.switchCgpaMode('bySgpa'));
-        document.getElementById('cgpa-by-marks-btn').addEventListener('click', () => this.switchCgpaMode('byMarks'));
+        // Replace the two button listeners with this one
+        document.getElementById('cgpa-bySgpa-btn').addEventListener('click', () => this.switchCgpaMode('bySgpa'));
+        document.getElementById('cgpa-byMarks-btn').addEventListener('click', () => this.switchCgpaMode('byMarks'));
 
         document.getElementById('branch-buttons').addEventListener('click', (e) => {
             const btn = e.target.closest('.branch-btn');
@@ -85,8 +86,6 @@ class CGPACalculatorApp {
         document.querySelectorAll('.mode-btn').forEach(btn => {
             const isActive = btn.id === `${this.currentMode}-mode-btn`;
             btn.classList.toggle('active', isActive);
-            btn.classList.toggle('bg-gray-300', !isActive);
-            btn.classList.toggle('text-gray-700', !isActive);
         });
 
         // Show/hide and update branch selection
@@ -100,16 +99,21 @@ class CGPACalculatorApp {
         const semesterContainer = document.getElementById('semester-selection-container');
         const showSemester = this.currentMode === 'sgpa' && this.currentBranch;
         semesterContainer.classList.toggle('hidden', !showSemester);
-        if (showSemester) semesterContainer.classList.add('fade-in');
-        document.querySelectorAll('.semester-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.semester === this.currentSemester);
-        });
+        if (showSemester) {
+            semesterContainer.classList.add('fade-in');
+            document.querySelectorAll('.semester-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.semester === this.currentSemester);
+            });
+        }
 
         // Show/hide SGPA calculator
         const sgpaSection = document.getElementById('sgpa-section');
         const showSgpa = this.currentMode === 'sgpa' && this.currentBranch && this.currentSemester;
         sgpaSection.classList.toggle('hidden', !showSgpa);
-        if (showSgpa) sgpaSection.classList.add('fade-in');
+        if (showSgpa) {
+            sgpaSection.classList.add('fade-in');
+            document.getElementById('sgpa-semester-display').textContent = this.currentSemester;
+        }
 
         // Show/hide CGPA calculator
         const cgpaSection = document.getElementById('cgpa-section');
@@ -126,8 +130,6 @@ class CGPACalculatorApp {
         document.querySelectorAll('.cgpa-mode-btn').forEach(btn => {
             const isActive = btn.id === `cgpa-${this.cgpaMode}-btn`;
             btn.classList.toggle('active', isActive);
-            btn.classList.toggle('bg-gray-300', !isActive);
-            btn.classList.toggle('text-gray-700', !isActive);
         });
 
         // Show/hide CGPA entry containers
@@ -144,8 +146,8 @@ class CGPACalculatorApp {
         for (let i = 1; i <= 8; i++) {
             const button = document.createElement('button');
             button.dataset.semester = i;
-            button.className = 'semester-btn px-4 py-2 text-center bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors';
-            button.textContent = `Semester ${i}`;
+            button.className = 'semester-btn';
+            button.textContent = `Sem ${i}`;
             container.appendChild(button);
         }
     }
@@ -163,23 +165,19 @@ class CGPACalculatorApp {
         subjects.forEach((subject, index) => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td class="border border-gray-300 px-4 py-2 font-mono text-sm">${subject.code}</td>
-                <td class="border border-gray-300 px-4 py-2">${subject.name}</td>
-                <td class="border border-gray-300 px-4 py-2 text-center font-semibold">${subject.credits}</td>
-                <td class="border border-gray-300 px-4 py-2 text-center">
+                <td>${subject.code}</td>
+                <td>${subject.name}</td>
+                <td class="text-center">${subject.credits}</td>
+                <td class="text-center">
                     <input type="number" 
                            id="marks-${index}" 
-                           class="w-20 p-1 border border-gray-300 rounded text-center focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
                            min="0" 
                            max="100" 
-                           placeholder="0-100"
+                           placeholder="--"
                            data-subject-index="${index}">
                 </td>
-                <td class="border border-gray-300 px-4 py-2 text-center">
-                    <span id="grade-${index}" class="font-semibold">-</span>
-                </td>
-                <td class="border border-gray-300 px-4 py-2 text-center">
-                    <span id="points-${index}" class="font-semibold">-</span>
+                <td class="text-center">
+                    <span id="grade-${index}">-</span>
                 </td>
             `;
             tableBody.appendChild(row);
@@ -198,25 +196,21 @@ class CGPACalculatorApp {
 
     handleMarksInput(index) {
         const gradeSpan = document.getElementById(`grade-${index}`);
-        const pointsSpan = document.getElementById(`points-${index}`);
         const marksInput = document.getElementById(`marks-${index}`);
         const marks = marksInput.value;
 
         if (marks === '' || isNaN(marks)) {
             gradeSpan.textContent = '-';
-            pointsSpan.textContent = '-';
-            gradeSpan.className = 'font-semibold';
+            gradeSpan.className = '';
         } else {
             const numMarks = parseFloat(marks);
             if (numMarks >= 0 && numMarks <= 100) {
                 const gradeInfo = getGradeInfo(numMarks);
                 gradeSpan.textContent = gradeInfo.grade;
-                pointsSpan.textContent = gradeInfo.points;
-                gradeSpan.className = `font-semibold ${calculator.getGradeClass(gradeInfo.grade)}`;
+                gradeSpan.className = `${calculator.getGradeClass(gradeInfo.grade)}`;
             } else {
                 gradeSpan.textContent = 'Invalid';
-                pointsSpan.textContent = '-';
-                gradeSpan.className = 'font-semibold text-red-500';
+                gradeSpan.className = 'grade-f';
             }
         }
 
@@ -243,20 +237,19 @@ class CGPACalculatorApp {
     }
 
     renderSGPAInputs() {
-        const container = document.getElementById('sgpa-inputs-container').querySelector('.grid');
+        const container = document.getElementById('cgpa-sgpa-inputs');
         container.innerHTML = '';
 
         for (let sem = 1; sem <= 8; sem++) {
             const inputDiv = document.createElement('div');
             inputDiv.innerHTML = `
-                <label class="block text-sm font-medium text-gray-700 mb-2">Semester ${sem}</label>
+                <label for="sgpa-sem-${sem}">Semester ${sem}</label>
                 <input type="number" 
                        id="sgpa-sem-${sem}" 
-                       class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-center" 
                        min="0" 
                        max="10" 
                        step="0.01"
-                       placeholder="0.00-10.00">
+                       placeholder="0.00">
             `;
             container.appendChild(inputDiv);
 
@@ -299,14 +292,17 @@ class CGPACalculatorApp {
             if (subjects.length === 0) continue;
 
             const semElement = document.createElement('div');
-            semElement.className = 'border border-gray-200 rounded-lg';
+            semElement.className = 'accordion-item';
             semElement.innerHTML = this.getSemesterAccordionHTML(sem, subjects);
             accordionContainer.appendChild(semElement);
 
             // Add event listeners
             const header = semElement.querySelector('.accordion-header');
             const content = semElement.querySelector('.accordion-content');
-            header.addEventListener('click', () => content.classList.toggle('hidden'));
+            header.addEventListener('click', () => {
+                content.classList.toggle('hidden');
+                header.classList.toggle('open');
+            });
 
             subjects.forEach((_, index) => {
                 const marksInput = document.getElementById(`cgpa-marks-sem${sem}-idx${index}`);
@@ -318,30 +314,30 @@ class CGPACalculatorApp {
     getSemesterAccordionHTML(sem, subjects) {
         const subjectRows = subjects.map((subject, index) => `
             <tr>
-                <td class="border border-gray-300 px-2 py-2 text-sm">${subject.name}</td>
-                <td class="border border-gray-300 px-2 py-2 text-center">${subject.credits}</td>
-                <td class="border border-gray-300 px-2 py-2 text-center">
-                    <input type="number" id="cgpa-marks-sem${sem}-idx${index}" class="w-20 p-1 border rounded text-center" min="0" max="100">
+                <td>${subject.name}</td>
+                <td class="text-center">${subject.credits}</td>
+                <td class="text-center">
+                    <input type="number" id="cgpa-marks-sem${sem}-idx${index}" class="w-20 p-1 border rounded text-center" min="0" max="100" placeholder="--">
                 </td>
             </tr>
         `).join('');
 
         return `
-            <div class="accordion-header bg-gray-50 p-4 cursor-pointer flex justify-between items-center rounded-t-lg">
-                <h4 class="font-semibold text-gray-700">Semester ${sem}</h4>
+            <div class="accordion-header">
+                <h4>Semester ${sem}</h4>
                 <div class="flex items-center gap-4">
-                    <span class="text-sm font-medium text-gray-600">SGPA: 
-                        <span id="cgpa-sem-sgpa-${sem}" class="font-bold text-blue-600">0.00</span>
+                    <span class="sgpa-display">SGPA: 
+                        <span id="cgpa-sem-sgpa-${sem}">0.00</span>
                     </span>
-                    <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </div>
             </div>
-            <div class="accordion-content p-4 hidden">
-                <table class="w-full border-collapse">
+            <div class="accordion-content hidden">
+                <table class="subjects-table">
                     <thead><tr>
-                        <th class="border px-2 py-2 text-left text-sm">Subject</th>
-                        <th class="border px-2 py-2 text-center text-sm">Credits</th>
-                        <th class="border px-2 py-2 text-center text-sm">Marks</th>
+                        <th class="text-left">Subject</th>
+                        <th class="text-center">Credits</th>
+                        <th class="text-center">Marks</th>
                     </tr></thead>
                     <tbody>${subjectRows}</tbody>
                 </table>
