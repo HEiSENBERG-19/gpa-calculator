@@ -1,10 +1,8 @@
-/* Window Theme for GPA Calculator inspired by FIRE Withdrawal Calculator */
-
 :root {
-    /* Dark Theme Colors (default) */
+    /* dark theme*/
     --bg-main: #0a0a0a;
     --bg-window: #1a1a1a;
-    --bg-content: #222222;
+    --bg-content: #000000;
     --bg-input: #2a2a2a;
     --border-color: #333333;
     --border-accent: #404040;
@@ -18,9 +16,25 @@
     --bg-button-active: #00ff41;
     --shadow-color: rgba(0, 0, 0, 0.5);
     --window-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    
+    /* dark theme button */
+    --btn-bg-normal: #000000;
+    --btn-bg-hover: #262626;
+    --btn-bg-active: #1a1a1a;
+    --btn-border-normal: #404040;
+    --btn-border-hover: #00ff41;
+    --btn-border-active: #00ff41;
+    --btn-text-normal: #888888;
+    --btn-text-hover: #ffffff;
+    --btn-text-active: #00ff41;
+    --btn-glow-color: rgba(0, 255, 65, 0.15);
+    --btn-glow-active: rgba(0, 255, 65, 0.2);
+    --btn-shadow-normal: rgba(0, 0, 0, 0.2);
+    --btn-shadow-hover: rgba(0, 255, 65, 0.08);
+    --btn-shadow-active: rgba(0, 255, 65, 0.12);
 }
 
-/* Light Theme Colors */
+/* light theme */
 [data-theme="light"] {
     --bg-main: #f8fafc;
     --bg-window: #ffffff;
@@ -38,9 +52,24 @@
     --bg-button-active: #6366f1;
     --shadow-color: rgba(99, 102, 241, 0.15);
     --window-shadow: 0 20px 40px rgba(99, 102, 241, 0.1);
+    
+    /* light theme button */
+    --btn-bg-normal: #f8fafc;
+    --btn-bg-hover: #f1f5f9;
+    --btn-bg-active: #ffffff;
+    --btn-border-normal: #cbd5e1;
+    --btn-border-hover: #6366f1;
+    --btn-border-active: #6366f1;
+    --btn-text-normal: #64748b;
+    --btn-text-hover: #1e293b;
+    --btn-text-active: #6366f1;
+    --btn-glow-color: rgba(99, 102, 241, 0.15);
+    --btn-glow-active: rgba(99, 102, 241, 0.2);
+    --btn-shadow-normal: rgba(0, 0, 0, 0.05);
+    --btn-shadow-hover: rgba(99, 102, 241, 0.08);
+    --btn-shadow-active: rgba(99, 102, 241, 0.12);
 }
 
-/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -62,7 +91,6 @@ body {
         radial-gradient(circle at 75% 75%, #001a0d 0%, transparent 50%);
 }
 
-/* Window Container */
 .main-container {
     width: 100%;
     max-width: 1200px;
@@ -75,7 +103,7 @@ body {
     flex-direction: column;
 }
 
-/* Window Header */
+/* header for window */
 .window-header {
     background: linear-gradient(90deg, #1a1a1a 0%, #2a2a2a 100%);
     border-bottom: 1px solid var(--border-color);
@@ -115,11 +143,9 @@ body {
     font-weight: 500;
 }
 
-/* Header Section */
 .header-section {
     padding: 2rem 2rem 1rem 2rem;
     text-align: left;
-    border-bottom: 1px solid var(--border-color);
     background-color: var(--bg-content);
 }
 
@@ -172,17 +198,17 @@ body {
     font-size: 0.9rem;
 }
 
-/* Window Content */
+/* window content */
 .window-content {
     flex: 1;
     padding: 2rem;
-    background-color: var(--bg-content);
+    background-color: #000000;
     display: flex;
     flex-direction: column;
     gap: 2rem;
 }
 
-/* Parameter Controls */
+/* parameter controls */
 .parameter-card {
     background-color: var(--bg-window);
     border: 1px solid var(--border-color);
@@ -207,82 +233,116 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* Segmented Controls */
+/* segmented Controls */
 .segmented-control {
     display: flex;
-    gap: 0.5rem;
-    background-color: var(--bg-input);
-    padding: 0.3rem;
-    border-radius: 6px;
-    border: 1px solid var(--border-color);
+    gap: 0.3rem;
+    background-color: transparent;
+    padding: 0.2rem;
+    border-radius: 8px;
 }
 
 .segmented-control button {
     flex: 1;
-    padding: 0.7rem 1rem;
-    background-color: transparent;
-    border: none;
-    border-radius: 4px;
-    color: var(--text-secondary);
+    padding: 0.75rem 1.2rem;
+    background-color: var(--btn-bg-normal);
+    border: 1px solid var(--btn-border-normal);
+    border-radius: 6px;
+    color: var(--btn-text-normal);
     font-family: inherit;
     font-size: 0.9rem;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     outline: none;
+    position: relative;
+    box-shadow: 0 2px 4px var(--btn-shadow-normal);
 }
 
 .segmented-control button:hover {
-    color: var(--text-primary);
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--btn-bg-hover);
+    border-color: var(--btn-border-hover);
+    color: var(--btn-text-hover);
+    box-shadow: 
+        0 4px 8px var(--btn-shadow-hover),
+        0 0 0 1px var(--btn-border-hover),
+        0 0 12px var(--btn-glow-color);
+    transform: translateY(-1px);
 }
 
 .segmented-control button.active {
-    background-color: var(--accent-primary);
-    color: var(--bg-main);
+    background-color: var(--btn-bg-active);
+    border-color: var(--btn-border-active);
+    color: var(--btn-text-active);
     font-weight: 600;
-    box-shadow: 0 2px 4px rgba(0, 255, 65, 0.3);
+    box-shadow: 
+        0 4px 12px var(--btn-shadow-active),
+        0 0 0 1px var(--btn-border-active),
+        0 0 16px var(--btn-glow-active);
+    transform: translateY(-1px);
 }
 
-/* Semester Grid */
+.segmented-control button:active {
+    transform: translateY(0);
+    transition: transform 0.1s ease;
+}
+
+/* semester grid */
 .semester-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 0.5rem;
-    background-color: var(--bg-input);
-    padding: 0.3rem;
-    border-radius: 6px;
-    border: 1px solid var(--border-color);
+    gap: 0.3rem;
+    background-color: transparent;
+    padding: 0.2rem;
+    border-radius: 8px;
 }
 
 .semester-grid .semester-btn {
-    padding: 0.7rem;
-    background-color: transparent;
-    border: none;
-    border-radius: 4px;
-    color: var(--text-secondary);
+    padding: 0.7rem 0.5rem;
+    background-color: var(--btn-bg-normal);
+    border: 1px solid var(--btn-border-normal);
+    border-radius: 6px;
+    color: var(--btn-text-normal);
     font-family: inherit;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-align: center;
     outline: none;
     font-size: 0.85rem;
+    position: relative;
+    box-shadow: 0 2px 4px var(--btn-shadow-normal);
 }
 
 .semester-grid .semester-btn:hover {
-    color: var(--text-primary);
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--btn-bg-hover);
+    border-color: var(--btn-border-hover);
+    color: var(--btn-text-hover);
+    box-shadow: 
+        0 4px 8px var(--btn-shadow-hover),
+        0 0 0 1px var(--btn-border-hover),
+        0 0 12px var(--btn-glow-color);
+    transform: translateY(-1px);
 }
 
 .semester-grid .semester-btn.active {
-    background-color: var(--accent-primary);
-    color: var(--bg-main);
+    background-color: var(--btn-bg-active);
+    border-color: var(--btn-border-active);
+    color: var(--btn-text-active);
     font-weight: 600;
-    box-shadow: 0 2px 4px rgba(0, 255, 65, 0.3);
+    box-shadow: 
+        0 4px 12px var(--btn-shadow-active),
+        0 0 0 1px var(--btn-border-active),
+        0 0 16px var(--btn-glow-active);
+    transform: translateY(-1px);
 }
 
-/* Calculator Sections */
+.semester-grid .semester-btn:active {
+    transform: translateY(0);
+    transition: transform 0.1s ease;
+}
+
+/* calc */
 .calculator-section {
     background-color: var(--bg-window);
     border: 1px solid var(--border-color);
@@ -306,7 +366,6 @@ body {
     font-weight: 500;
 }
 
-/* Table Styles */
 .table-wrapper {
     overflow-x: auto;
     border-radius: 6px;
@@ -348,7 +407,6 @@ body {
     background-color: rgba(255, 255, 255, 0.02);
 }
 
-/* Input Styling */
 input[type="number"] {
     background-color: var(--bg-input);
     border: 1px solid var(--border-color);
@@ -360,6 +418,14 @@ input[type="number"] {
     width: 80px;
     transition: all 0.2s;
     outline: none;
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 input[type="number"]:focus {
@@ -372,7 +438,6 @@ input[type="number"]:hover {
     border-color: var(--border-accent);
 }
 
-/* Result Box */
 .result-box {
     margin-top: 1.5rem;
     padding: 1.5rem;
@@ -508,12 +573,7 @@ input[type="number"]:hover {
 
 /* Footer */
 .footer-section {
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 0.75rem;
-    padding: 1rem;
-    border-top: 1px solid var(--border-color);
-    background-color: var(--bg-input);
+    display: none;
 }
 
 /* Utility Classes */
@@ -592,26 +652,31 @@ input[type="number"]:hover {
     top: 1rem;
     right: 1rem;
     z-index: 1000;
-    background-color: var(--bg-button);
-    border: 1px solid var(--border-color);
+    background-color: var(--btn-bg-normal);
+    border: 1px solid var(--btn-border-normal);
     border-radius: 8px;
     padding: 0.75rem;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--text-primary);
+    color: var(--btn-text-normal);
     font-family: inherit;
     font-size: 0.85rem;
     font-weight: 500;
-    box-shadow: 0 4px 12px var(--shadow-color);
+    box-shadow: 0 4px 8px var(--btn-shadow-normal);
 }
 
 .theme-toggle:hover {
-    background-color: var(--bg-button-hover);
+    background-color: var(--btn-bg-hover);
+    border-color: var(--btn-border-hover);
+    color: var(--btn-text-hover);
     transform: translateY(-1px);
-    box-shadow: 0 6px 16px var(--shadow-color);
+    box-shadow: 
+        0 6px 12px var(--btn-shadow-hover),
+        0 0 0 1px var(--btn-border-hover),
+        0 0 12px var(--btn-glow-color);
 }
 
 .theme-toggle svg {
@@ -668,6 +733,11 @@ input[type="number"]:hover {
     background-color: var(--accent-primary);
     color: white;
     box-shadow: 0 2px 4px rgba(99, 102, 241, 0.3);
+}
+
+/* Fix light theme window content background */
+[data-theme="light"] .window-content {
+    background-color: var(--bg-content);
 }
 
 [data-theme="light"] .result-box {

@@ -1,5 +1,3 @@
-// Main application logic and DOM manipulation
-
 class CGPACalculatorApp {
     constructor() {
         this.currentMode = 'sgpa';
@@ -337,6 +335,7 @@ class CGPACalculatorApp {
     getSemesterAccordionHTML(sem, subjects) {
         const subjectRows = subjects.map((subject, index) => `
             <tr>
+                <td>${subject.code}</td>
                 <td>${subject.name}</td>
                 <td class="text-center">${subject.credits}</td>
                 <td class="text-center">
@@ -358,7 +357,8 @@ class CGPACalculatorApp {
             <div class="accordion-content hidden">
                 <table class="subjects-table">
                     <thead><tr>
-                        <th class="text-left">Subject</th>
+                        <th class="text-left">Course Code</th>
+                        <th class="text-left">Subject Name</th>
                         <th class="text-center">Credits</th>
                         <th class="text-center">Marks</th>
                     </tr></thead>

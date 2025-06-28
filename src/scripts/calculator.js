@@ -1,5 +1,3 @@
-// Calculator functions for SGPA and CGPA calculations
-
 class GradeCalculator {
     constructor() {
         this.currentSubjects = [];

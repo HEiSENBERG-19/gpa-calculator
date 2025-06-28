@@ -52,7 +52,7 @@ const CSE_SUBJECTS = {
         { code: 'BCSL305', name: 'Data Structures Lab', credits: 1 },
         { code: 'BCS306x', name: 'ESC/ETC/PLC', credits: 3 },
         { code: 'BSCK307', name: 'Social Connect and Responsibility', credits: 1 },
-        { code: 'BCS358x', name: 'Ability Enhancement Course', credits: 2 }
+        { code: 'BCS358x', name: 'Ability Enhancement Course', credits: 1 }
     ],
     4: [
         { code: 'BCS401', name: 'Analysis & Design of Algorithms', credits: 3 },
@@ -60,7 +60,7 @@ const CSE_SUBJECTS = {
         { code: 'BCS403', name: 'Database Management Systems', credits: 4 },
         { code: 'BCSL404', name: 'Analysis & Design of Algorithms Lab', credits: 1 },
         { code: 'BCS405x', name: 'ESC/ETC/PLC', credits: 3 },
-        { code: 'BCS456x', name: 'Ability Enhancement Course', credits: 2 },
+        { code: 'BCS456x', name: 'Ability Enhancement Course', credits: 1 },
         { code: 'BBOC407', name: 'Biology For Computer Engineers', credits: 2 },
         { code: 'BUHK408', name: 'Universal Human Values Course', credits: 1 }
     ],
@@ -81,7 +81,7 @@ const CSE_SUBJECTS = {
         { code: 'BXX654x', name: 'Open Elective Course', credits: 3 },
         { code: 'BCS685', name: 'Project Phase I', credits: 2 },
         { code: 'BCSL606', name: 'Machine Learning Lab', credits: 1 },
-        { code: 'BXX657x', name: 'Ability Enhancement Course', credits: 2 }
+        { code: 'BCS657x', name: 'Ability Enhancement Course', credits: 1 }
     ],
     7: [
         { code: 'BCS701', name: 'Internet of Things', credits: 4 },
@@ -126,9 +126,9 @@ const ECE_SUBJECTS = {
         { code: 'BEC303', name: 'Electronic Principles and Circuits', credits: 4 },
         { code: 'BEC304', name: 'Network Analysis', credits: 3 },
         { code: 'BECL305', name: 'Analog and Digital Systems Design Lab', credits: 1 },
-        { code: 'BXX306x', name: 'ESC/ETC/PLC', credits: 3 },
+        { code: 'BEC306x', name: 'ESC/ETC/PLC', credits: 3 },
         { code: 'BSCK307', name: 'Social Connect and Responsibility', credits: 1 },
-        { code: 'BXX358x', name: 'Ability Enhancement Course', credits: 2 }
+        { code: 'BEC358x', name: 'Ability Enhancement Course', credits: 1 }
     ],
     4: [
         { code: 'BEC401', name: 'Electromagnetics Theory', credits: 3 },
@@ -136,7 +136,7 @@ const ECE_SUBJECTS = {
         { code: 'BEC403', name: 'Control Systems', credits: 4 },
         { code: 'BECL404', name: 'Communication Lab', credits: 1 },
         { code: 'BEC405x', name: 'ESC/ETC/PLC', credits: 3 },
-        { code: 'BXX456x', name: 'Ability Enhancement Course', credits: 2 },
+        { code: 'BEC456x', name: 'Ability Enhancement Course', credits: 1 },
         { code: 'BBOK407', name: 'Biology For Engineers', credits: 3 },
         { code: 'BUHK408', name: 'Universal Human Values Course', credits: 1 }
     ],
@@ -157,7 +157,7 @@ const ECE_SUBJECTS = {
         { code: 'BEC654x', name: 'Open Elective Course', credits: 3 },
         { code: 'BEC685', name: 'Major Project Phase I', credits: 2 },
         { code: 'BECL606', name: 'VLSI Design and Testing Lab', credits: 1 },
-        { code: 'BEC657x', name: 'Ability Enhancement Course', credits: 2 }
+        { code: 'BEC657x', name: 'Ability Enhancement Course', credits: 1 }
     ],
     7: [
         { code: 'BEC701', name: 'Microwave Engineering and Antenna Theory', credits: 4 },
